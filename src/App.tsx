@@ -10,6 +10,7 @@ function App() {
   const [shouldDeploy, setShouldDeploy] = useState("");
   const [funnyDeploymentPhrases, setFunnyDeploymentPhrases] = useState<string[]>([]);
   const [nonFridayPhrases, setNonFridayPhrases] = useState<string[]>([]);
+  const [team, setTeam] = useState<string[]>([]);
 
   const fetchPhrases = async () => {
     try {
@@ -23,6 +24,16 @@ function App() {
       setShouldDeploy("Error fetching phrases.");
     }
   };
+
+  const fetchTeam = async () => {
+    try {
+      const response = await fetch('/.netlify/functions/getTeam');
+      const data = await response.json();
+      setTeam(data.teamName);
+    } catch (error) {
+      console.error("Error fetching team:", error);
+    }
+  }
 
   const checkShouldDeploy = (funnyPhrases: string[], nonFridayPhrases: string[]) => {
     const today = new Date();
@@ -40,6 +51,7 @@ function App() {
 
   useEffect(() => {
     fetchPhrases();
+    fetchTeam();
   }, []);
 
   return (
@@ -65,7 +77,7 @@ function App() {
           </AnimatedGradientText>
         </div>
         <div className="h-1/4" />
-        <p>Created with ❤️ by Infra DevOps Team</p>
+        <p>Created with ❤️ by {team}</p>
         <RetroGrid />
       </div>
     </>

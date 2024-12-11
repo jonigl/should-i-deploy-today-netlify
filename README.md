@@ -1,4 +1,26 @@
-# React + TypeScript + Vite
+# Should I Deploy Today - Netlify
+
+## Vite 
+
+- Running locally `npm run dev`
+- Building dist `npm run build`
+
+## UI Framework
+
+- [Magic UI](https://magicui.design/). If you are curious enough check: [Install and configure Vite](https://magicui.design/docs/installation/vite)
+  - Also check this [issue answer](https://github.com/shadcn-ui/ui/issues/4677#issuecomment-2323108511) to fix some issues with shadcdn 
+- Install [tailwind](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) vscode extension 
+
+## Netlify
+
+- Intall Netlify cli `npm install netlify-cli -g`
+- If you want to use Netlify Functions add this dependency `npm install @netlify/functions`
+  - To test your app including your netlify function you can run this `netlify dev`
+  - Remeber to rename .env.example file to .env and set your envars for local runs
+
+# About the base template
+
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -6,6 +28,7 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
 
 ## Expanding the ESLint configuration
 

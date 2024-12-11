@@ -10,6 +10,7 @@
 - [Magic UI](https://magicui.design/). If you are curious enough check: [Install and configure Vite](https://magicui.design/docs/installation/vite)
   - Also check this [issue answer](https://github.com/shadcn-ui/ui/issues/4677#issuecomment-2323108511) to fix some issues with shadcdn 
 - Install [tailwind](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) vscode extension 
+  - Dark mode fixed following [this](https://github.com/shadcn-ui/ui/issues/515#issuecomment-1834219536) 
 
 ## Netlify
 

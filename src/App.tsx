@@ -1,20 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import AnimatedGradientText from "@/components/ui/animated-gradient-text";
 import { cn } from "@/lib/utils";
 import RetroGrid from "@/components/ui/retro-grid";
 import SparklesText from "@/components/ui/sparkles-text";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   const [shouldDeploy, setShouldDeploy] = useState("");
-  const [funnyDeploymentPhrases, setFunnyDeploymentPhrases] = useState<string[]>([]);
+  const [funnyDeploymentPhrases, setFunnyDeploymentPhrases] = useState<
+    string[]
+  >([]);
   const [nonFridayPhrases, setNonFridayPhrases] = useState<string[]>([]);
   const [team, setTeam] = useState<string[]>([]);
 
   const fetchPhrases = async () => {
     try {
-      const response = await fetch('/.netlify/functions/getPhrases');
+      const response = await fetch("/.netlify/functions/getPhrases");
       const data = await response.json();
       setFunnyDeploymentPhrases(data.funnyDeploymentPhrases);
       setNonFridayPhrases(data.nonFridayPhrases);
@@ -27,15 +29,18 @@ function App() {
 
   const fetchTeam = async () => {
     try {
-      const response = await fetch('/.netlify/functions/getTeam');
+      const response = await fetch("/.netlify/functions/getTeam");
       const data = await response.json();
       setTeam(data.teamName);
     } catch (error) {
       console.error("Error fetching team:", error);
     }
-  }
+  };
 
-  const checkShouldDeploy = (funnyPhrases: string[], nonFridayPhrases: string[]) => {
+  const checkShouldDeploy = (
+    funnyPhrases: string[],
+    nonFridayPhrases: string[],
+  ) => {
     const today = new Date();
     const day = today.getDay();
     let randomPhrase = "";
@@ -64,7 +69,12 @@ function App() {
         <div className="should relative flex h-[250px] w-screen flex-col items-center justify-center overflow-hidden bg-background md:shadow-xl">
           <SparklesText text={shouldDeploy} />
         </div>
-        <div className="z-10 flex min-h-32 items-center justify-center" onClick={() => checkShouldDeploy(funnyDeploymentPhrases, nonFridayPhrases)}>
+        <div
+          className="z-10 flex min-h-32 items-center justify-center"
+          onClick={() =>
+            checkShouldDeploy(funnyDeploymentPhrases, nonFridayPhrases)
+          }
+        >
           <AnimatedGradientText>
             🚀 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
             <span

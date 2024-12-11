@@ -11,6 +11,7 @@
   - Also check this [issue answer](https://github.com/shadcn-ui/ui/issues/4677#issuecomment-2323108511) to fix some issues with shadcdn 
 - Install [tailwind](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) vscode extension 
   - Dark mode fixed following [this](https://github.com/shadcn-ui/ui/issues/515#issuecomment-1834219536) 
+  - Adding Prettier [plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 
 ## Netlify
 

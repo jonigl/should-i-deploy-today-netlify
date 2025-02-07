@@ -64,7 +64,7 @@ function App() {
       <div className="should relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-background md:shadow-xl">
         <div className="h-10" />
         <span className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
-          Should I Deploy Today??
+          Should I Deploy Today???
         </span>
         <div className="should relative flex h-[250px] w-screen flex-col items-center justify-center overflow-hidden bg-background md:shadow-xl">
           <SparklesText text={shouldDeploy} />

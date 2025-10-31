@@ -2,14 +2,24 @@
 import type { Context } from "@netlify/functions";
 
 export default async (req: Request, context: Context) => {
-  const devtunnelUrl = process.env.DEVTUNNEL_URL;
 
+  const devtunnelUrl = process.env.DEVTUNNEL_URL;
   if (!devtunnelUrl) {
     return new Response(JSON.stringify({ error: 'DEVTUNNEL_URL is not defined in environment variables' }), { status: 500, headers: { 'content-type': 'application/json' } });
   }
 
+  // Add a random query parameter to avoid cache
+  let urlWithNoCache = devtunnelUrl;
   try {
-    const upstream = await fetch(devtunnelUrl, { method: 'GET' });
+    const urlObj = new URL(devtunnelUrl);
+    urlObj.searchParams.append('nocache', Math.random().toString(36).slice(2));
+    urlWithNoCache = urlObj.toString();
+  } catch (e) {
+    // If URL parsing fails, fallback to original string
+  }
+
+  try {
+    const upstream = await fetch(urlWithNoCache, { method: 'GET' });
 
     // Mirror upstream status and body. We'll normalize headers to JSON on the response.
     const contentType = upstream.headers.get('content-type') || '';
